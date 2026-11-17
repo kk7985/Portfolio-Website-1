@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Karthik K Portfolio</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #55677e;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>
+<script>
+  /*
+    GitHub Pages has no server-side routing, so any direct hit or refresh
+    on a deep link (e.g. /project/ecommerce, /about, /skills) serves this
+    404.html instead of index.html. This script saves the URL the visitor
+    actually wanted, then redirects to the site root. index.html's own
+    script (the sessionStorage.redirect block at the top) picks that saved
+    URL back up and restores it, then loadRoute() renders the right
+    section/project.
+  */
+  (function () {
+    var parts = location.pathname.split('/').filter(Boolean);
+    var isGithubIoProjectSite = location.hostname.indexOf('github.io') !== -1 && parts.length > 0;
+    var basePath = isGithubIoProjectSite ? ('/' + parts[0]) : '';
+
+    sessionStorage.redirect = location.href;
+    location.replace(location.origin + basePath + '/');
+  })();
+</script>
+</head>
+<body>
+  Redirecting&hellip;
+</body>
+</html>
